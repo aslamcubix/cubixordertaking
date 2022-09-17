@@ -55,6 +55,7 @@ namespace C_OrderTaking_Api.Controllers
             DataTable dt = db.getTableDictionary("[Sp_odrtrkn_Item]", true, parameters);
 
             // var result = new ObjectResult(dt);
+            // var result = new ObjectResult(dt);
             var json = Newtonsoft.Json.JsonConvert.SerializeObject(dt);
             var result = new ObjectResult(json);
             return result;
