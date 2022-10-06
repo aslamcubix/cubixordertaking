@@ -24,6 +24,9 @@ namespace C_OrderTaking_Api.Controllers
             parameters.Add("@mod","Log");
             parameters.Add("@Username", user);
             parameters.Add("@password", pass);
+            parameters.Add("@So_no", "");
+            parameters.Add("@ChngUsr", "");
+            parameters.Add("@statusto", "");
             DataTable dt = Con.getTableDictionary("[Sp_odrtrkn_User]", true, parameters);
             // var result = new ObjectResult(dt); 
 
@@ -32,6 +35,9 @@ namespace C_OrderTaking_Api.Controllers
             return result;
 
         }
+
+
+        
 
     }
 }

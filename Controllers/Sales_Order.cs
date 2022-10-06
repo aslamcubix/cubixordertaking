@@ -138,7 +138,7 @@ namespace C_OrderTaking_Api.Controllers
             parameters.Add("@netwt", "");
             parameters.Add("@grosswt", "");
             parameters.Add("@insurance", "");
-            parameters.Add("@custom", "");
+            parameters.Add("@custom", "ONLINE");
             parameters.Add("@foot1", "");
             parameters.Add("@frdet", "");
             double rcdcamt = 0;

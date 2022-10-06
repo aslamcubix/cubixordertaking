@@ -10,6 +10,32 @@ namespace C_OrderTaking_Api.Model
 {
     public class General
     {
+        public bool InsertUpdateDeleteDictionary(string sql, bool isProcedure, Dictionary<string, string> parameters)
+        {
+
+            using (SqlConnection sqlConnection = new SqlConnection(GeneralConnection.sqlDataSource))
+            {
+                sqlConnection.Open();
+                using (SqlCommand sqlCommand = new SqlCommand(sql, sqlConnection))
+                {
+                    if (isProcedure)
+                        sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                    else
+                        sqlCommand.CommandType = System.Data.CommandType.Text;
+                    foreach (string parameter in parameters.Keys)
+                    {
+                        sqlCommand.Parameters.AddWithValue(parameter, parameters[parameter]);
+                    }
+
+                    sqlCommand.CommandTimeout = 300;
+                    if (sqlCommand.ExecuteNonQuery() > 0)
+                        return true;
+                    else
+                        return false;
+                }
+            }
+
+        }
         public DataTable getTableDictionary(string sql,bool isProcedure,Dictionary<string,string> parameters)
         {
             using (SqlConnection sqlConnection = new SqlConnection(GeneralConnection.sqlDataSource))
